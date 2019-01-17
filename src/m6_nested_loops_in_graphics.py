@@ -167,24 +167,24 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-    original_corner_1 = rectangle.corner_1
-    original_corner_2 = rectangle.corner_2
-    corner_1 = original_corner_1
-    corner_2 = original_corner_2
-    for k in range(n,0,-1):
+    original_corner_1 = rectangle.get_upper_left_corner()
+    original_corner_2 = rectangle.get_lower_right_corner()
+    corner_1 = rectangle.get_upper_left_corner()
+    corner_2 = rectangle.get_lower_right_corner()
+    for k in range(1,n+1):
         for j in range(k):
-            new_rectangle = rg.Rectangle(original_corner_1,original_corner_2)
+            new_rectangle = rg.Rectangle(corner_1, corner_2)
             new_rectangle.attach_to(window)
             window.render(0.1)
-            original_corner_1.x += rectangle.get_width()
-            original_corner_2.x += rectangle.get_width()
-        original_corner_1.x = corner_1.x + rectangle.get_width()
-        original_corner_2.x = corner_2.x + rectangle.get_width()
-        original_corner_1.y = corner_1.y - rectangle.get_height()
-        original_corner_2.y = corner_2.y - rectangle.get_height()
+            corner_1.x -= rectangle.get_width()
+            corner_2.x -= rectangle.get_width()
+        corner_1.x = original_corner_1.x
+        corner_2.x = original_corner_2.x
+        corner_1.y += rectangle.get_height()
+        corner_2.y += rectangle.get_height()
 
 
 # ----------------------------------------------------------------------

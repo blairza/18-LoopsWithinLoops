@@ -178,6 +178,7 @@ def draw_wall_on_right(rectangle, n, window):
         for j in range(k):
             new_rectangle = rg.Rectangle(original_corner_1,original_corner_2)
             new_rectangle.attach_to(window)
+            window.render(0.1)
             original_corner_1.x += rectangle.get_width()
             original_corner_2.x += rectangle.get_width()
         original_corner_1.x = corner_1.x + rectangle.get_width()
